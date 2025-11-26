@@ -1,0 +1,19 @@
+# Pastas de Build do PyInstaller
+build/
+dist/
+*.spec
+
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+
+# Ambiente Virtual
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+segredos.py
