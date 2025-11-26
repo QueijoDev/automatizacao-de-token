@@ -26,38 +26,35 @@ A ferramenta comunica diretamente com os drivers PKCS#11, eliminando a necessida
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ⚠️ Pré-requisitos Obrigatórios
 
-* **[Python 3.11+](https://www.python.org/)**: Linguagem base.
-* **[PyKCS11](https://github.com/LudovicRousseau/PyKCS11)**: Comunicação direta com o hardware (Chip do Token).
-* **[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)**: Interface gráfica moderna e responsiva.
-* **WinReg & Ctypes**: Manipulação de baixo nível do Windows para permissões.
-
----
-
-## ⚙️ Pré-requisitos
+Para que o software funcione, o computador **DEVE** ter o driver do token instalado. O software não instala o driver, ele apenas o utiliza.
 
 1.  **Sistema Operacional:** Windows 10 ou 11 (64-bits).
-2.  **Drivers:** SafeSign Standard (A.E.T. Europe B.V.) instalado.
-    * DLL esperada: `C:\Windows\System32\aetpkss1.dll`
+2.  **Driver SafeSign (A.E.T. Europe):**
+    * O software busca especificamente pela DLL: `C:\Windows\System32\aetpkss1.dll`
+    * Certifique-se de que o "SafeSign Standard" ou o gerenciador do seu certificado digital está instalado.
 
 ---
 
-## 📦 Como Usar (Usuário Final)
+## 🔐 Configuração de Senhas (Importante)
 
-1.  Baixe o executável `ConfiguradorToken.exe`.
-2.  Conecte o(s) token(s) USB no computador.
-3.  Execute o programa.
-    * *Nota: O programa pedirá permissão de Administrador para ajustar o driver.*
-4.  Aguarde o status ficar **Laranja** (Pendente).
-5.  Clique em **"CONFIGURAR TOKENS"**.
-6.  Aguarde a barra de progresso e o ícone ficar **Verde** ✅.
+Por questões de segurança, **as senhas reais NÃO estão incluídas no código fonte** deste repositório.
 
----
+Para que a automação funcione no seu computador, você precisa criar um arquivo de configuração manual:
 
-## 💻 Como Rodar o Código (Desenvolvedor)
+1.  Na pasta raiz do projeto, crie um novo arquivo chamado **`segredos.py`**.
+2.  Cole o seguinte código dentro dele e altere as senhas:
 
-### 1. Clonar o repositório
-```bash
-git clone [https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git)
-cd SEU_REPOSITORIO
+```python
+# segredos.py
+# Este arquivo contém as credenciais reais e NÃO é enviado ao GitHub.
+
+# Nome que aparecerá no Token e no topo do programa
+LABEL_REAL = "NOME DA SUA EMPRESA"
+
+# Senha de Administrador (PUK/SO-PIN)
+PUK_REAL = "SUA_SENHA_PUK_AQUI"
+
+# Senha do Usuário (PIN)
+PIN_REAL = "SUA_SENHA_PIN_AQUI"
